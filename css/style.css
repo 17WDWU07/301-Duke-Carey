@@ -1,0 +1,55 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+#wrapper {
+	text-align: center;
+	width: 100vw;
+	height: 100vh;
+	background-color: grey;
+	/*color: white;*/
+	box-sizing: border-box;
+	padding: 1em;
+}
+
+h1 {
+	color: #FFF;
+}
+
+#dashboard {
+	width: 70%;
+	height: 90%;
+	margin-top: 1em;
+	float: left;
+}
+
+.section {
+	width: 50%;
+	height: 50%;
+	float: left;
+}
+
+#chartOne {
+	background-color: pink;
+}
+
+#chartTwo {
+	background-color: lightblue;
+}
+
+#chartThree {
+	background-color: orange;
+}
+
+#chartFour {
+	background-color: #AAF0D1;
+}
+
+#controls {
+	width: 30%;
+	height: 90%;
+	float: left;
+	background-color: #c9c9ff;
+	margin-top: 1em;
+}
