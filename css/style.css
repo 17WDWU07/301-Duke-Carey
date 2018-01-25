@@ -7,13 +7,17 @@
 	text-align: center;
 	width: 100vw;
 	height: 100vh;
-	background-color: grey;
+	background: linear-gradient(135deg, #336E7B 35%, #674172, #22264b);
 	box-sizing: border-box;
 	padding: 1em;
 }
 
 h1 {
 	color: #FFF;
+	font-size: 46px;
+	padding-top: 10px;
+	padding-bottom: 5px;
+	font-family: 'Bungee Hairline', cursive;
 }
 
 #dashboard {
@@ -27,28 +31,36 @@ h1 {
 	width: 50%;
 	height: 50%;
 	float: left;
+	border-radius: 15px;
+	background-color: rgba(237, 237, 237, 0.3);
 }
 
 #chartOne {
-	background-color: pink;
+	margin-right: 10px;
+	margin-bottom: 10px;
 }
 
 #chartTwo {
-	background-color: lightblue;
+	width: 48%;
+
 }
 
 #chartThree {
-	background-color: orange;
+	height: 48%;
+	margin-right:  10px;
 }
 
 #chartFour {
-	background-color: #AAF0D1;
+	height: 48%;
+	width: 48%;
+	
 }
 
 #controls {
 	width: 30%;
 	height: 90%;
 	float: left;
-	background-color: #c9c9ff;
+	background-color: rgba(237, 237, 237, 0.3);
 	margin-top: 1em;
+	border-radius: 15px;
 }
