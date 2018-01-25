@@ -38,22 +38,46 @@ function drawDashboard(){
 				chartType: 'ScatterChart',
 				containerId: 'chartOne',
 				options: {
+					colors: ['#674172'],
 					width: '100%',
 					height: '100%',
 					legend: 'none',
 					hAxis: {
-						title: 'Age'
+						title: 'Age',
+						textStyle: {
+							color: 'white'
+						},
+						titleTextStyle: {
+               				color: 'white',
+               				fontName: 'Bungee Hairline',
+             		}
 					},
 					vAxis: {
-						title: 'Hours Listening to Music Daily'
+						title: 'Hours Listening to Music Daily',
+					textStyle: {
+							color: 'white'
+						},
+					titleTextStyle: {
+               			color: 'white',
+               			fontName: 'Bungee Hairline'
+            		}
 					},
 					backgroundColor: {
 						fill: 'transparent'
 					}
 				},
+				titleTextStyle: {
+               	color: 'white',
+               	fontName: 'Bungee Hairline'
+           		},
 				view: {
 					columns: [3, 7]
-				}
+				},
+				chartArea: {
+        			backgroundColor: {
+        				stroke: "white"
+        			}
+        		}
 			});
 
 			var ageRangeSlider = new google.visualization.ControlWrapper({
@@ -190,7 +214,24 @@ function drawPie(data){
 		title: "Concert Goers",
 		backgroundColor: {
 			fill: 'transparent'
-		}
+		},
+		titleTextStyle: {
+               color: 'white',
+               fontName: 'Bungee Hairline'
+        },
+        pieSliceTextStyle: {
+            color: 'white'
+        },
+        slices: {  
+        	0: {color: '#2EB8F6'},
+            1: {color: '#06638C'}
+        },
+        legend: {
+        	textStyle: {
+        		color: 'white',
+        		fontName: 'Bungee Hairline'
+        	}
+        }
 	};
 
 	var Pie = new google.visualization.PieChart(document.getElementById('chartThree'));
@@ -241,7 +282,27 @@ function drawDonut(data){
 		backgroundColor: {
 			fill: 'transparent'
 		},
-		pieHole: 0.4
+		titleTextStyle: {
+               color: 'white',
+               fontName: 'Bungee Hairline'
+             },
+		pieHole: 0.4,
+		legend: {
+        	textStyle: {
+        		color: 'white',
+        		fontName: 'Bungee Hairline'
+        	}
+        },
+        slices: {  
+        	0: {color: '#56CBFF'},
+            1: {color: '#7DD7FF'},
+            2: {color: '#4AADD9'},
+            3: {color: '#2286B2'},
+            4: {color: '#06638C'},
+            5: {color: '#A3E3FF'},
+            6: {color: '#00405D'},
+            7: {color: '#2EB8F6'}
+        }
 	};
 
 	var PieHole = new google.visualization.PieChart(document.getElementById('chartFour'));
@@ -272,10 +333,38 @@ function drawBar(data){
 	dataDevice.addRow(["Other", other]);
 
 	var options = {
-		title: "Preferred Device",
+		title: 'Preferred Device',
+		colors: ['#674172'],
 		backgroundColor: {
 			fill: 'transparent'
-		}
+		},
+		titleTextStyle: {
+               color: 'white',
+               fontName: 'Bungee Hairline'
+        },
+        chartArea: {
+        	backgroundColor: {
+        		stroke: 'white'
+        	}
+        },
+        legend: {
+        	textStyle: {
+        		color: 'white',
+        		fontName: 'Bungee Hairline'
+        	}
+        },
+	     
+	    hAxis: {
+			textStyle: {
+				color: 'white'
+			}
+	       },
+	     vAxis: {
+        	textStyle: {
+        		color: 'white'
+        	}
+	      }
+	  
 	};
 
 	var Bar = new google.visualization.BarChart(document.getElementById('chartTwo'));
