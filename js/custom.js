@@ -38,29 +38,39 @@ function drawDashboard(){
 				chartType: 'ScatterChart',
 				containerId: 'chartOne',
 				options: {
-					colors: ['#674172'],
+					title: 'Listening to Music Daily',
+					titleTextStyle: {
+		               color: 'white',
+		               fontName: 'Bungee Hairline',
+		               fontSize: 20
+			        },
+					colors: ['#00405D'],
 					width: '100%',
 					height: '100%',
 					legend: 'none',
 					hAxis: {
 						title: 'Age',
+						ticks: [18, 22, 26, 30, 34],
 						textStyle: {
 							color: 'white'
 						},
 						titleTextStyle: {
                				color: 'white',
                				fontName: 'Bungee Hairline',
-             		}
+               				fontSize: 15
+             			}
 					},
 					vAxis: {
-						title: 'Hours Listening to Music Daily',
-					textStyle: {
-							color: 'white'
+						title: 'Hours',
+						ticks: [0, 3, 6, 9, 12, 15],
+						textStyle: {
+								color: 'white'
 						},
-					titleTextStyle: {
-               			color: 'white',
-               			fontName: 'Bungee Hairline'
-            		}
+						titleTextStyle: {
+	               			color: 'white',
+	               			fontName: 'Bungee Hairline',
+	               			fontSize: 15
+	            		}
 					},
 					backgroundColor: {
 						fill: 'transparent'
@@ -80,11 +90,28 @@ function drawDashboard(){
         		}
 			});
 
+			google.visualization.events.addListener(scatterChart, 'select', clickEvent);
+
+			function clickEvent(){
+				console.log('a');
+				var tableRow = scatterChart.getSelection()[0].row;
+				scatterChart.setSelection();
+				var infoData = dataFromJSON[tableRow];
+
+				if(infoData){
+					document.getElementById('avatar').src = infoData.avatar;
+					document.getElementById('fullName').innerText = infoData.first_name + ' ' + infoData.last_name;
+					document.getElementById('age').innerText = infoData.age;
+					document.getElementById('gender').innerText = infoData.gender;
+					document.getElementById('genre').innerText = infoData.music;
+				}
+			};
+
 			var ageRangeSlider = new google.visualization.ControlWrapper({
 				controlType: 'NumberRangeFilter',
 				containerId: 'controlOne',
 				options: {
-					filterColumnLabel: 'Age'
+					filterColumnLabel: 'Age',
 				} 
 			});
 
@@ -217,7 +244,8 @@ function drawPie(data){
 		},
 		titleTextStyle: {
                color: 'white',
-               fontName: 'Bungee Hairline'
+               fontName: 'Bungee Hairline',
+               fontSize: 20
         },
         pieSliceTextStyle: {
             color: 'white'
@@ -229,7 +257,8 @@ function drawPie(data){
         legend: {
         	textStyle: {
         		color: 'white',
-        		fontName: 'Bungee Hairline'
+        		fontName: 'Bungee Hairline',
+        		fontSize: 15
         	}
         }
 	};
@@ -246,36 +275,36 @@ function drawDonut(data){
 	dataMusic.addColumn('string', 'Music');
 	dataMusic.addColumn('number', 'Count');
 	
-	var pop = 0, jazz = 0, alternative = 0, randb = 0, other = 0, hiphopandrap = 0, techno = 0, rock = 0;
+	var Pop = 0, Jazz = 0, Alternative = 0, RnB = 0, Other = 0, Rap = 0, Techno = 0, Rock = 0;
 	
 	for (var i = 0; i < data.length; i++) {
-		if(data[i].music == "pop"){ 
-			pop++;
-		} else if (data[i].music == "rock"){
-			rock++;
-		} else if (data[i].music == "jazz"){
-			jazz++;
-		} else if (data[i].music == "techno"){
-			techno++;
-		} else if (data[i].music == "alternative"){
-			alternative++;
-		} else if (data[i].music == "randb"){
-			randb++;
-		} else if (data[i].music == "hiphopandrap"){
-			hiphopandrap++;
-		} else if (data[i].music == "other"){
-			other++;
+		if(data[i].music == "Pop"){ 
+			Pop++;
+		} else if (data[i].music == "Rock"){
+			Rock++;
+		} else if (data[i].music == "Jazz"){
+			Jazz++;
+		} else if (data[i].music == "Techno"){
+			Techno++;
+		} else if (data[i].music == "Alternative"){
+			Alternative++;
+		} else if (data[i].music == "RnB"){
+			RnB++;
+		} else if (data[i].music == "Rap"){
+			Rap++;
+		} else if (data[i].music == "Other"){
+			Other++;
 		}
 	}
 	
-	dataMusic.addRow(["Pop", pop]);
-	dataMusic.addRow(["Rock", rock]);
-	dataMusic.addRow(["Jazz", jazz]);
-	dataMusic.addRow(["Techno", techno]);
-	dataMusic.addRow(["Alternative", alternative]);
-	dataMusic.addRow(["R&B", randb]);
-	dataMusic.addRow(["Hip Hop/Rap", hiphopandrap]);
-	dataMusic.addRow(["Other", other]);
+	dataMusic.addRow(["Pop", Pop]);
+	dataMusic.addRow(["Rock", Rock]);
+	dataMusic.addRow(["Jazz", Jazz]);
+	dataMusic.addRow(["Techno", Techno]);
+	dataMusic.addRow(["Alternative", Alternative]);
+	dataMusic.addRow(["R&B", RnB]);
+	dataMusic.addRow(["Hip Hop/Rap", Rap]);
+	dataMusic.addRow(["Other", Other]);
 
 	var options = {
 		title: "Preferred Music Genre",
@@ -284,13 +313,15 @@ function drawDonut(data){
 		},
 		titleTextStyle: {
                color: 'white',
-               fontName: 'Bungee Hairline'
-             },
+               fontName: 'Bungee Hairline',
+               fontSize: 20
+        },
 		pieHole: 0.4,
 		legend: {
         	textStyle: {
         		color: 'white',
-        		fontName: 'Bungee Hairline'
+        		fontName: 'Bungee Hairline',
+        		fontSize: 12
         	}
         },
         slices: {  
@@ -334,37 +365,44 @@ function drawBar(data){
 
 	var options = {
 		title: 'Preferred Device',
-		colors: ['#674172'],
+		colors: ['#06638C'],
 		backgroundColor: {
 			fill: 'transparent'
 		},
 		titleTextStyle: {
                color: 'white',
-               fontName: 'Bungee Hairline'
+               fontName: 'Bungee Hairline',
+               fontSize: 20
         },
         chartArea: {
         	backgroundColor: {
         		stroke: 'white'
         	}
         },
-        legend: {
-        	textStyle: {
-        		color: 'white',
-        		fontName: 'Bungee Hairline'
-        	}
-        },
-	     
+        legend: 'none',
 	    hAxis: {
+	    	title: 'Number Of User',
+	    	ticks: [0, 2, 4, 6, 8, 10],
 			textStyle: {
 				color: 'white'
-			}
-	       },
-	     vAxis: {
+			},
+			titleTextStyle: {
+       			color: 'white',
+       			fontName: 'Bungee Hairline',
+       			fontSize: 15
+    		}
+	    },
+	    vAxis: {
+	     	title: 'Device',
         	textStyle: {
         		color: 'white'
-        	}
-	      }
-	  
+        	},
+        	titleTextStyle: {
+       			color: 'white',
+       			fontName: 'Bungee Hairline',
+       			fontSize: 15
+    		}
+      	}	  
 	};
 
 	var Bar = new google.visualization.BarChart(document.getElementById('chartTwo'));

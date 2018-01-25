@@ -14,8 +14,8 @@
 
 h1 {
 	color: #FFF;
-	font-size: 46px;
-	padding-top: 10px;
+	font-size: 60px;
+	padding-top: 5px;
 	padding-bottom: 5px;
 	font-family: 'Bungee Hairline', cursive;
 }
@@ -25,6 +25,21 @@ h2 {
 	margin-bottom: 1em;
 	font-family: 'Bungee Hairline', cursive;
 	color: #FFF;
+	font-size: 20px;
+}
+
+h3 {
+	margin-bottom: 15px;
+	font-family: 'Bungee Hairline', cursive;
+	color: #FFF;
+	font-size: 15px;
+}
+
+h4 {
+	margin-bottom: 15px;
+	font-family: 'Bungee Hairline', cursive;
+	color: #FFF;
+	font-size: 25px;
 }
 
 #dashboard {
@@ -53,7 +68,6 @@ h2 {
 	float: left;
 	background-color: rgba(237, 237, 237, 0.3);
 	margin-top: 3em;
-	/*margin-top: 5px;*/
 	border-radius: 15px;
 }
 
