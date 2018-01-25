@@ -38,6 +38,7 @@ function drawDashboard(){
 				chartType: 'ScatterChart',
 				containerId: 'chartOne',
 				options: {
+					title: 'askdnak',
 					width: '100%',
 					height: '100%',
 					legend: 'none',
