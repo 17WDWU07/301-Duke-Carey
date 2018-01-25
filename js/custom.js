@@ -90,23 +90,6 @@ function drawDashboard(){
         		}
 			});
 
-			google.visualization.events.addListener(scatterChart, 'select', clickEvent);
-
-			function clickEvent(){
-				console.log('a');
-				var tableRow = scatterChart.getSelection()[0].row;
-				scatterChart.setSelection();
-				var infoData = dataFromJSON[tableRow];
-
-				if(infoData){
-					document.getElementById('avatar').src = infoData.avatar;
-					document.getElementById('fullName').innerText = infoData.first_name + ' ' + infoData.last_name;
-					document.getElementById('age').innerText = infoData.age;
-					document.getElementById('gender').innerText = infoData.gender;
-					document.getElementById('genre').innerText = infoData.music;
-				}
-			};
-
 			var ageRangeSlider = new google.visualization.ControlWrapper({
 				controlType: 'NumberRangeFilter',
 				containerId: 'controlOne',
@@ -129,7 +112,25 @@ function drawDashboard(){
 			});
 
 			dashboard.bind([ageRangeSlider, genderSelector], [scatterChart]);
+
+			google.visualization.events.addListener(scatterChart, 'select', clickEvent);
+
 			dashboard.draw(data);
+
+			function clickEvent(){
+				console.log('a');
+				var tableRow = scatterChart.getSelection()[0].row;
+				scatterChart.setSelection();
+				var infoData = dataFromJSON[tableRow];
+
+				if(infoData){
+					document.getElementById('avatar').src = infoData.avatar;
+					document.getElementById('fullName').innerText = infoData.first_name + ' ' + infoData.last_name;
+					document.getElementById('age').innerText = infoData.age;
+					document.getElementById('gender').innerText = infoData.gender;
+					document.getElementById('genre').innerText = infoData.music;
+				}
+			};
 
 			drawBar(dataFromJSON);
 
