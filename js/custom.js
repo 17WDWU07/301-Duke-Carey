@@ -106,7 +106,8 @@ function drawDashboard(){
 					ui: {
 						allowMultiple: false,
 						allowTyping: false,
-						labelStacking: 'verticle'
+						labelStacking: 'verticle',
+						caption: 'Select Gender'
 					}
 				}
 			});
@@ -119,8 +120,8 @@ function drawDashboard(){
 
 			function clickEvent(){
 				console.log('a');
-				var tableRow = scatterChart.getSelection()[0].row;
-				scatterChart.setSelection();
+				var tableRow = scatterChart.getChart().getSelection()[0].row;
+				scatterChart.getChart().setSelection();
 				var infoData = dataFromJSON[tableRow];
 
 				if(infoData){
